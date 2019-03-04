@@ -1,2 +1,2 @@
 # progateStudy
-progateでmanannda 
+progateで学んだことをまとめる
