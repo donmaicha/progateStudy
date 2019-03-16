@@ -270,3 +270,15 @@ let isSpeedOver: Bool = carSpeed > 60
 if isSpeedOver {
     print("スピード違反です")
 }
+```
+### 条件に合致しない時の処理(else)
+if文にelseを組み合わせると「~~の場合は○○、そうでなければ××」という処理ができるようになります。
+if文の条件がfalse（偽）のとき、elseの中身が実行されます。左側の画像で処理の流れを確認してみましょう。
+```swift
+let carSpeed:Int = 50
+if carSpeed > 60 {
+    print("スピード違反です") // 実行されない
+} else {
+    print("その調子です") // 実行される
+}
+```
