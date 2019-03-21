@@ -69,10 +69,9 @@ text-align: right;  // 右揃え
 
 ### アイコンを表示するにはFont Awesomeというものを使うと便利
 Font Awesomeは、以下の手順で使用することができます。
-1. Font AwesomeのCSSファイルを読み込む
+1. [FontAwesome](https://fontawesome.com/?utm_source=font_awesome_homepage&utm_medium=display&utm_campaign=fa5_released&utm_content=auto_modal)のCSSファイルを読み込む
 2. spanタグにfaクラスとfa-アイコン名クラスを指定する（Font Awesomeのサイトにアイコンごとのクラス名が載っています。）
 3. これだけで簡単にアイコンを表示させることができます。
-[FontAwesome](https://fontawesome.com/?utm_source=font_awesome_homepage&utm_medium=display&utm_campaign=fa5_released&utm_content=auto_modal)
 
 ### opacityとrgba
 opacityには要素の中身全てを透明にするという性質があります。<br>
@@ -101,6 +100,55 @@ aタグはインライン要素なので、中身のテキストの部分しか�
 aタグをブロック要素にすると、大きさが親要素いっぱいに広がるので、全体をクリックできるようになります。
 ![aタグのクリックできる範囲変更](aタグのクリックできる範囲変更.png)
 
+### 文字の太さを指定する
+font-weightプロパティを用いると文字の太さを変更することができます。<br>
+normalまたはboldを指定します。<br>
+h1~h6の要素は初期状態でfont-weight: bold;となっているので、font-weight: normal;と指定すれば文字が細くなります。
+
+### 影をつける
+影を付けるためにはbox-shadowプロパティを用います。
+```css
+/* 垂直方向 水平方向 カラーコード */
+box-shadow: 10px 10px rgb(00,00,00);
+```
+
+### マウスのカーソル操作
+cursorプロパティを用いることでマウスのカーソルが要素に乗ったときのカーソルの形を変えることができます。<br>
+タグによってcursorが初期状態で設定されているものもあり、例えばaタグは初期状態でpointerが設定されています。<br>
+![cursor設定方法](cursor設定方法.png)
+
+### ボタンを押した時、へこむようにする
+ボタンを押したときに以下の処理をすると、へこんで見えるようになります。
+* 影を消す
+* ボタンの位置を影の分だけ下げる
+
+### クリック時に変化をつける
+セレクタにactiveを用いることで、要素がクリックされている間だけCSSを適用することができます。 
+```html
+<div>
+    <h1>Progate</h1>
+</div>
+```
+```css
+div:active {
+    background-color: red;
+}
+```
+box-shadow: none;とすると、影を消すことが出来ます。<br>
+このように多くのプロパティはnoneを指定することによって消すことができます。
+
+### ボタンをへこませる
+クリック時に、以下の処理をすることによって、ボタンがへこんで見えるようになります。<br>
+* box-shadowをnoneにする
+* position: relative;とtopによって影の分だけ位置を下げる
+```css
+.btn:active {
+    position:relative;
+    top:6px
+    box-shadow:none;
+}
+```
+
 ### 画面に要素を固定する
 position: fixed;を使うと、常に要素を画面上の指定した位置に固定させておくことができます。<br>
 位置は、top、left、right、bottomを使って指定します。<br>
@@ -109,5 +157,3 @@ position: fixed;を使うと、常に要素を画面上の指定した位置に�
     position: fixed;
     top: 10px;
     left: 40px;
-}
-```
