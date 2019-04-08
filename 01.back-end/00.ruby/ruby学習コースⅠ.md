@@ -1,5 +1,5 @@
 # htmlcss学習メモ
-##Rubyの基本
+## Rubyの基本
 ### 標準出力
 ```ruby
 puts 'Hello World'
