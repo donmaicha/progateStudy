@@ -7,4 +7,4 @@
 ## ruby
 [学習コースⅠ](01.back-end\00.ruby\ruby学習コースⅠ)<br>
 [学習コースⅡ](01.back-end\00.ruby\ruby学習コースⅡ)<br>
-[学習コースⅠ](01.back-end\00.ruby\ruby学習コースⅢ)<br>
+[学習コースⅢ](01.back-end\00.ruby\ruby学習コースⅢ)<br>
