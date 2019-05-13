@@ -93,4 +93,4 @@ Postsテーブルにデータを追加するには、
    
 の手順を行えば良い。
 ![postインスタンスの作成](img/postインスタンスの作成.png)
-上記のように書くことで、contentが「Hello world」であるPostインスタンスを作成することができる。
+上記のように書くことで、contentが「Hello world」であるPostインスタンスを作成することができる
