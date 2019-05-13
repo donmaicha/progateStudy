@@ -84,3 +84,13 @@ rails g model Post content:text
 ```
 
 ## rails console
+![rails_console](img/rails_console.png)
+
+## テーブルにデータを保存する
+Postsテーブルにデータを追加するには、 
+1. newメソッドでPostモデルのインスタンスを作成
+2. Postsテーブルに保存
+   
+の手順を行えば良い。
+![postインスタンスの作成](img/postインスタンスの作成.png)
+上記のように書くことで、contentが「Hello world」であるPostインスタンスを作成することができる。
