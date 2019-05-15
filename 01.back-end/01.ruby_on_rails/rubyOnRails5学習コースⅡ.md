@@ -69,7 +69,7 @@ end
 下図のようなpostsテーブルを作成するマイグレーションファイルは「rails g model Post content:text」コマンドで作成する。<br>
 また、「text」は「長い文字列」を意味しており、contentカラムにどのようなデータが入るかを意味している。<br>
 コマンドを実行すると、db/migrateフォルダの下にマイグレーションファイルが作成されます。
-![postsテーブル作成](img/postsテーブル作成.png)
+![postsテーブル作成](img/postsテーブル作成.png)<br>
 先ほど作成したマイグレーションファイルを用い、データベースに変更を反映するために、「rails db:migrate」コマンドを実行する必要がある。<br>
 このコマンドを実行することで、マイグレーションファイルに書いてある指示通りにデータベースが作成される。<br>
 「rails g model」コマンドによって、Postモデルが定義されたファイル「post.rb」が、app/modelsフォルダの中に作成されている。<br>
@@ -91,6 +91,46 @@ Postsテーブルにデータを追加するには、
 1. newメソッドでPostモデルのインスタンスを作成
 2. Postsテーブルに保存
    
-の手順を行えば良い。
-![postインスタンスの作成](img/postインスタンスの作成.png)
-上記のように書くことで、contentが「Hello world」であるPostインスタンスを作成することができる
+の手順を行えば良い。<br>
+![postインスタンスの作成](img/postインスタンスの作成.png)<br>
+上記のように書くことで、contentが「Hello world」であるPostインスタンスを作成することができる<br>
+この時点で、DBには登録されていない
+
+## saveメソッド
+作成したPostインスタンスをpostsテーブルに保存するために用いる。<br>
+saveメソッドを使うことができるのはPostモデルがApplicationRecordを継承しているから。
+```ruby
+post = Post.new(content:"Hello World") # インスタンス生成
+post.save # Postインスタンスをテーブルに保存
+```
+
+## テーブルから1つのデータを取り出す
+### テーブルにある最初のデータを取得する
+```ruby
+post = Post.first # postsテーブルの最初のデータが取得できる
+puts post.content # Post.firstで取得したデータのcontentを取得できる
+```
+
+### テーブルにあるすべてのデータを取得する
+```ruby
+posts = Post.all # Post.allで取得したデータは配列で渡される
+post = Post.all[0].content # よって、この式はpost = Post.firstのcontentと同一となる
+puts posts[0].content # これもpost = Post.firstのcontentと同一となる
+```
+
+## 全ての投稿を表示する
+postsコントローラのindexアクション内の@postsに、Post.allで取得したデータを代入し、ビューでは@postsに代入されている配列データをeach文で1つずつ変数postに代入し、投稿内容を繰り返し表示させる
+posts_controller.rb
+```ruby
+def index 
+  @posts = Post.all
+end
+```
+posts/index.html.erb
+```html
+<% @posts.each do |post| %>
+  <div class="posts-index-item">
+    <%= post.content %>
+  </div>
+<% end %>
+```
