@@ -50,3 +50,28 @@ end
   </div>
 <% end %>
 ```
+
+## 投稿内容を受け取るアクションを作成する
+今までルーティングを書く際に「get」と書いてきたが、フォームの値を受け取る場合は「post」とする必要がある。この「post」はPostモデルの「Post」とは関係ない。）<br>
+通常は「get」、フォームの値を受け取るときは「post」というように覚える。
+```ruby
+post "posts/create" => "posts#create" # フォームの値を受け取るため、postとする
+```
+form_tagメソッドを用いると、フォームに入力されたデータを送信することができる。<br>
+form_tagは、「form_tag(送信先のURL) do」のように送信先のURLを指定します。<br>
+これによって、<input type="submit" ...>のボタンを押した時に、指定されたURLにデータが送信される。
+```html
+<%= form_tag("/posts/create") do %>
+  <textarea></textarea>
+  <input type="submit" value="投稿>
+<% end %>
+```
+
+## 投稿一覧ページに転送する
+他のURLに転送するには、redirect_toメソッドを用いる｡<br>
+redirect_toは「redirect_to(URL)」とすることで、URLのページに転送することができる。
+```ruby
+def create 
+  redirect_to("/posts/index") # 指定したURLに転送する
+end
+```
