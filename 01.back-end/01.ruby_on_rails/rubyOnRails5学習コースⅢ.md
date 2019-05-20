@@ -75,3 +75,14 @@ def create
   redirect_to("/posts/index") # 指定したURLに転送する
 end
 ```
+
+##  投稿を保存する
+### name属性
+現状のフォームでは、投稿ボタンを押しても入力した内容をcreateアクションに伝えることができない。<br>
+textareaタグにname属性を指定すると、入力データを送信できるようになり、name属性の値をキーとしたハッシュがrails側に送られる。
+```html
+<!-- 入力データを送信できるようになる -->
+<textarea name="content"></textarea> 
+```
+![name属性](img/name属性.png)
+
