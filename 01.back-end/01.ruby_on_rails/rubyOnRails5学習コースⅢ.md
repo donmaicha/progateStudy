@@ -91,3 +91,23 @@ name属性を指定したフォームに入力したデータは、コントロ�
 フォームのデータは、変数paramsで受け取る。<br>
 paramsはname属性に設定した文字列をキーとしたハッシュになっている。
 ![入力されたデータを受け取る](img/入力されたデータを受け取る.png)
+
+### データベースに投稿を保存する
+```ruby
+def create 
+  @post = Post.new(content: params[:content]) # contentが入力データであるインスタンスを作成している
+  @post.save
+  reject_to("/posts/index")
+end
+```
+
+## 投稿を並び替える
+### orderメソッド
+order(カラム名: 並び替えの順序）のように使い、投稿一覧を並び替えることができる。<br>
+並び替えの順序には、昇順（:asc）と降順（:desc）のどちらかを指定できる。<br>
+created_atを基準に降順（:desc）に並べ替えると、新しいものから順番に表示するようになる。
+```ruby
+def index 
+  @posts = Post.all.order(created_at: :desc)
+end
+```
