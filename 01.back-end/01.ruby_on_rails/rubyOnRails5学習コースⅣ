@@ -23,8 +23,30 @@ get "posts/:id/edit" => "posts#edit"
 # 「localhost: 3000/posts/2/edit」
 # などのURLに対応させる
 ```
-### 投稿編集ページへのリンクを追加する
+## 投稿編集ページへのリンクを追加する
 ```html
 <!-- editアクションのURLを指定 -->
 <%= link_to("編集", "/posts/#{@post.id}/edit") %>
+```
+
+## フォームに初期値を用意する
+textareaタグでは、タグで囲んだ部分を初期値として設定できる。
+```html
+<textarea>にんじゃわんこ</textarea>
+```
+![textareaの初期値](img/textareaの初期値.PNG)
+
+## 投稿内容をフォームの初期値にする
+フォームの初期値として、編集したい投稿内容を表示するため、<br>
+editアクションで、URLのidと同じidの投稿データをデータベースから取得し、<br>
+そのcontentの値(=投稿の内容)を初期値に設定する
+```ruby
+def edit
+  # {id: 1}というハッシュが変数paramsに入っている
+  @post = Post.find_by(id: params[:id])
+end
+```
+```html
+<!-- 初期値として入力される -->
+<textarea><%= @post.content %></textarea>
 ```
